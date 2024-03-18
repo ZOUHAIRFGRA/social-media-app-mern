@@ -41,3 +41,24 @@ exports.signupUser = catchAsync(async (req, res, next) => {
     sendCookie(newUser, 201, res);
 });
 
+// Login User
+exports.loginUser = catchAsync(async (req, res, next) => {
+
+    const { userId, password } = req.body;
+
+    const user = await User.findOne({
+        $or: [{ email: userId }, { username: userId }]
+    }).select("+password");
+
+    if (!user) {
+        return next(new ErrorHandler("User doesn't exist", 401));
+    }
+
+    const isPasswordMatched = await user.comparePassword(password);
+
+    if (!isPasswordMatched) {
+        return next(new ErrorHandler("Password doesn't match", 401));
+    }
+
+    sendCookie(user, 201, res);
+});
