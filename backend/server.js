@@ -1,23 +1,16 @@
-const express = require('express');
-const fileUpload = require('express-fileupload');
-const path = require('path');
-const cookieParser = require('cookie-parser');
+const app = require('./app');
+const connectDatabase = require('./config/database');
+const cloudinary = require('cloudinary');
+const PORT = process.env.PORT || 4000;
 
+connectDatabase();
 
-const app = express();
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-app.use(fileUpload());
-app.use('/public', express.static('public'));
-
-if (process.env.NODE_ENV != "production") {
-    require('dotenv').config({ path: 'backend/config/config.env' });
-}
-
-const user = require('./routes/userRoute');
-app.use('/api/v1', user);
-
-
-module.exports = app;
+const server = app.listen(PORT, () => {
+    console.log(`Server Running on http://localhost:${PORT}`);
+});
