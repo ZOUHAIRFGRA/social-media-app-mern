@@ -16,11 +16,9 @@ const server = app.listen(PORT, () => {
 });
 
 // ============= socket.io ==============
-
 const io = require("socket.io")(server, {
-  // pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.CLIENT_URL || "http://localhost:3000",
   },
 });
 
@@ -41,28 +39,21 @@ const getUser = (userId) => {
 
 io.on("connection", (socket) => {
   console.log("🚀 Someone connected!");
-  // console.log(users);
-
-  // get userId and socketId from client
   socket.on("addUser", (userId) => {
     addUser(userId, socket.id);
     io.emit("getUsers", users);
   });
 
-  // get and send message
   socket.on("sendMessage", ({ senderId, receiverId, content }) => {
     const user = getUser(receiverId);
-
     io.to(user?.socketId).emit("getMessage", {
       senderId,
       content,
     });
   });
 
-  // typing states
   socket.on("typing", ({ senderId, receiverId }) => {
     const user = getUser(receiverId);
-    console.log(user);
     io.to(user?.socketId).emit("typing", senderId);
   });
 
@@ -71,11 +62,9 @@ io.on("connection", (socket) => {
     io.to(user?.socketId).emit("typing stop", senderId);
   });
 
-  // user disconnected
   socket.on("disconnect", () => {
     console.log("⚠️ Someone disconnected");
     removeUser(socket.id);
     io.emit("getUsers", users);
-    // console.log(users);
   });
 });

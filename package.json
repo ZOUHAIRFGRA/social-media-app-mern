@@ -5,11 +5,10 @@
   "main": "backend/server.js",
   "scripts": {
     "install-client": "npm install --prefix frontend",
-    "install-server": "npm install --prefix backend",
     "client": "npm start --prefix frontend",
-    "server": "nodemon backend/server.js",
+    "server": "nodemon server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "postinstall": "npm run install-client && npm run install-server"
+    "install": "npm install && npm run install-client"
   },
   "author": "",
   "license": "ISC",
