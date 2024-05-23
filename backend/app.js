@@ -21,7 +21,9 @@ const post = require("./routes/postRoute");
 const user = require("./routes/userRoute");
 const chat = require("./routes/chatRoute");
 const message = require("./routes/messageRoute");
-
+app.get('/',(req,res)=>{
+  res.json('Server is running')
+})
 app.use("/api/v1", post);
 app.use("/api/v1", user);
 app.use("/api/v1", chat);
