@@ -4,7 +4,9 @@ const cloudinary = require("cloudinary");
 const PORT = process.env.PORT || 4000;
 
 connectDatabase();
-
+app.get('/',(req,res)=>{
+  res.json('Server is running')
+})
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
