@@ -949,5 +949,10 @@ module.exports = {
     'active',
     'disabled',
   ],
+  variants: {
+    extend: {
+      placeholderColor: ['dark'], // Enable dark mode variant for placeholder color
+    },
+  },
   plugins: [],
 }

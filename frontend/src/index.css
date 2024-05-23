@@ -3,13 +3,14 @@
 @tailwind utilities;
 
 body {
-  background-color: #fafafa;
+  background-color: #2d2d2d; /* Darker shade for better contrast */
   font-family: "Segoe UI", sans-serif;
+  /* color: #e0e0e0; Light text color for readability */
 }
 
 .slick-arrow {
   margin: 0 2.3rem;
-  background-color: #ffffff;
+  background-color: #333333;
   z-index: 100;
 }
 
