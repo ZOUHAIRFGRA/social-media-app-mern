@@ -7,8 +7,8 @@
     "install-client": "npm install --prefix frontend",
     "client": "npm start --prefix frontend",
     "server": "nodemon server.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "install": "npm install && npm run install-client"
+    "dev": "nodemon backend/server.js --ignore client",
+    "install": "npm install"
   },
   "author": "",
   "license": "ISC",
