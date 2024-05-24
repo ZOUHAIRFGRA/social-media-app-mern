@@ -24,9 +24,7 @@ app.use(cors({
   credentials: true ,
   // Allow credentials (cookies) to be sent and received
 }));
-const server = app.listen(PORT, () => {
-  console.log(`Server Running on http://localhost:${PORT}`);
-});
+const server = http.createServer(app);
 
 // ============= socket.io ==============
 const io = require("socket.io")(server, {
