@@ -31,7 +31,7 @@ const server = app.listen(PORT, () => {
 // ============= socket.io ==============
 const io = require("socket.io")(server, {
   cors: {
-    origin: process.env.CLIENT_URL || "https://social-media-app-mern-swart.vercel.app",
+    origin: "https://social-media-app-mern-swart.vercel.app",
   },
 });
 
