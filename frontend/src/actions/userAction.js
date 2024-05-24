@@ -10,13 +10,16 @@ export const loginUser = (userId, password) => async (dispatch) => {
             headers: {
                 "Content-Type": "application/json",
             },
+            withCredentials: true,
         }
 
         const { data } = await axios.post(
             'https://social-media-app-mern-api.vercel.app/api/v1/login',
             { userId, password },
             config
-        );
+            , {
+                withCredentials: true, // Ensure cookies are sent with the request
+              });
 
         dispatch({
             type: LOGIN_USER_SUCCESS,
@@ -46,7 +49,9 @@ export const registerUser = (userData) => async (dispatch) => {
             'https://social-media-app-mern-api.vercel.app/api/v1/signup',
             userData,
             config
-        );
+            , {
+                withCredentials: true, // Ensure cookies are sent with the request
+              });
 
         dispatch({
             type: REGISTER_USER_SUCCESS,
