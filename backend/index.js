@@ -15,6 +15,9 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
+
+
+const app = express();
 const server = app.listen(PORT, () => {
   console.log(`Server Running on http://localhost:${PORT}`);
 });
@@ -72,9 +75,6 @@ io.on("connection", (socket) => {
     io.emit("getUsers", users);
   });
 });
-
-
-const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
