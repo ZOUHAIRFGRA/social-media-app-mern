@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middlewares/error");
 const fileUpload = require("express-fileupload");
 const cors = require("cors");
+const http = require("http");
 
 const connectDatabase = require("./config/database");
 const cloudinary = require("cloudinary");
