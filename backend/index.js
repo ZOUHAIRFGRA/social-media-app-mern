@@ -20,7 +20,7 @@ cloudinary.config({
 
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3000', // Replace with the origin of your frontend application
+  origin: 'https://social-media-app-mern-swart.vercel.app', // Replace with the origin of your frontend application
   credentials: true ,
   // Allow credentials (cookies) to be sent and received
 }));
@@ -31,7 +31,7 @@ const server = app.listen(PORT, () => {
 // ============= socket.io ==============
 const io = require("socket.io")(server, {
   cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:3000",
+    origin: process.env.CLIENT_URL || "https://social-media-app-mern-swart.vercel.app",
   },
 });
 
