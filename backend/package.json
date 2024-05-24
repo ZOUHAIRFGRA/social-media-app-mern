@@ -2,10 +2,10 @@
   "name": "social-media-app-mern",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "server": "nodemon server.js",
-    "dev": "nodemon server.js --ignore client"
+    "server": "nodemon index.js",
+    "dev": "nodemon index.js --ignore client"
     
   },
   "author": "",
