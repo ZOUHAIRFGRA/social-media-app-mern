@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const errorMiddleware = require('./middlewares/error');
 const fileUpload = require('express-fileupload');
 const path = require('path');
-
+const cors = require("cors")
 const app = express();
 app.use(cors({
     origin: 'https://social-media-app-mern-swart.vercel.app', // Replace with the origin of your frontend application
