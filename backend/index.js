@@ -8,9 +8,7 @@ const cloudinary = require("cloudinary");
 const PORT = process.env.PORT || 4000;
 
 connectDatabase();
-app.get('/',(req,res)=>{
-  res.send('Server is running')
-})
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -85,9 +83,11 @@ app.use(fileUpload());
 app.use("/public", express.static("public"));
 
 if (process.env.NODE_ENV != "production") {
-  require("dotenv").config({ path: "backend/config/config.env" });
+  require("dotenv").config({ path: "./config/config.env" });
 }
-
+app.get('/',(req,res)=>{
+  res.send('Server is running')
+})
 // import routes
 const post = require("./routes/postRoute");
 const user = require("./routes/userRoute");
