@@ -29,7 +29,7 @@ export const sendMessage = (msgData) => async (dispatch) => {
     try {
 
         dispatch({ type: NEW_MESSAGE_REQUEST });
-        const config = { header: { "Content-Type": "application/json" } }
+        const config = { header: { "Content-Type": "application/json" }, withCredentials: true, }
         const { data } = await axios.post('https://social-media-app-mern-api.vercel.app/api/v1/newMessage/', msgData, config, {
             withCredentials: true, // Ensure cookies are sent with the request
           });
