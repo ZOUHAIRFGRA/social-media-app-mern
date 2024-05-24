@@ -7,7 +7,9 @@ export const getAllMessages = (chatId) => async (dispatch) => {
 
         dispatch({ type: ALL_MESSAGES_REQUEST });
 
-        const { data } = await axios.get(`https://social-media-app-mern-api.vercel.app/api/v1/messages/${chatId}`);
+        const { data } = await axios.get(`https://social-media-app-mern-api.vercel.app/api/v1/messages/${chatId}`, {
+            withCredentials: true, // Ensure cookies are sent with the request
+          });
 
         dispatch({
             type: ALL_MESSAGES_SUCCESS,
@@ -28,7 +30,9 @@ export const sendMessage = (msgData) => async (dispatch) => {
 
         dispatch({ type: NEW_MESSAGE_REQUEST });
         const config = { header: { "Content-Type": "application/json" } }
-        const { data } = await axios.post('https://social-media-app-mern-api.vercel.app/api/v1/newMessage/', msgData, config);
+        const { data } = await axios.post('https://social-media-app-mern-api.vercel.app/api/v1/newMessage/', msgData, config, {
+            withCredentials: true, // Ensure cookies are sent with the request
+          });
 
         dispatch({
             type: NEW_MESSAGE_SUCCESS,

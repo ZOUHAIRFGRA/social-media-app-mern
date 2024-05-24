@@ -67,7 +67,9 @@ export const loadUser = () => async (dispatch) => {
 
         dispatch({ type: LOAD_USER_REQUEST });
 
-        const { data } = await axios.get('https://social-media-app-mern-api.vercel.app/api/v1/me');
+        const { data } = await axios.get('https://social-media-app-mern-api.vercel.app/api/v1/me', {
+            withCredentials: true, // Ensure cookies are sent with the request
+          });
 
         dispatch({
             type: LOAD_USER_SUCCESS,
@@ -85,7 +87,9 @@ export const loadUser = () => async (dispatch) => {
 // Logout User
 export const logoutUser = () => async (dispatch) => {
     try {
-        await axios.get('https://social-media-app-mern-api.vercel.app/api/v1/logout');
+        await axios.get('https://social-media-app-mern-api.vercel.app/api/v1/logout', {
+            withCredentials: true, // Ensure cookies are sent with the request
+          });
         dispatch({ type: LOGOUT_USER_SUCCESS });
     } catch (error) {
         dispatch({
@@ -100,7 +104,9 @@ export const getUserDetails = (username) => async (dispatch) => {
     try {
 
         dispatch({ type: USER_DETAILS_REQUEST });
-        const { data } = await axios.get(`https://social-media-app-mern-api.vercel.app/api/v1/user/${username}`);
+        const { data } = await axios.get(`https://social-media-app-mern-api.vercel.app/api/v1/user/${username}`, {
+            withCredentials: true, // Ensure cookies are sent with the request
+          });
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
@@ -120,7 +126,9 @@ export const getUserDetailsById = (userId) => async (dispatch) => {
     try {
 
         dispatch({ type: USER_DETAILS_REQUEST });
-        const { data } = await axios.get(`https://social-media-app-mern-api.vercel.app/api/v1/userdetails/${userId}`);
+        const { data } = await axios.get(`https://social-media-app-mern-api.vercel.app/api/v1/userdetails/${userId}`, {
+            withCredentials: true, // Ensure cookies are sent with the request
+          });
 
         dispatch({
             type: USER_DETAILS_SUCCESS,
@@ -142,7 +150,9 @@ export const getSuggestedUsers = () => async (dispatch) => {
         dispatch({ type: ALL_USERS_REQUEST });
 
         setTimeout(async () => {
-            const { data } = await axios.get('https://social-media-app-mern-api.vercel.app/api/v1/users/suggested');
+            const { data } = await axios.get('https://social-media-app-mern-api.vercel.app/api/v1/users/suggested', {
+                withCredentials: true, // Ensure cookies are sent with the request
+              });
 
             dispatch({
                 type: ALL_USERS_SUCCESS,
@@ -163,7 +173,9 @@ export const followUser = (userId) => async (dispatch) => {
     try {
 
         dispatch({ type: FOLLOW_USER_REQUEST });
-        const { data } = await axios.get(`https://social-media-app-mern-api.vercel.app/api/v1/follow/${userId}`);
+        const { data } = await axios.get(`https://social-media-app-mern-api.vercel.app/api/v1/follow/${userId}`, {
+            withCredentials: true, // Ensure cookies are sent with the request
+          });
 
         dispatch({
             type: FOLLOW_USER_SUCCESS,
@@ -194,7 +206,9 @@ export const forgotPassword = (email) => async (dispatch) => {
             'https://social-media-app-mern-api.vercel.app/api/v1/password/forgot',
             { email },
             config
-        );
+            , {
+                withCredentials: true, // Ensure cookies are sent with the request
+              });
 
         dispatch({
             type: FORGOT_PASSWORD_SUCCESS,
@@ -225,7 +239,9 @@ export const resetPassword = (token, password) => async (dispatch) => {
             `https://social-media-app-mern-api.vercel.app/api/v1/password/reset/${token}`,
             { password },
             config
-        );
+            , {
+                withCredentials: true, // Ensure cookies are sent with the request
+              });
 
         dispatch({
             type: RESET_PASSWORD_SUCCESS,
@@ -256,7 +272,9 @@ export const updateProfile = (userData) => async (dispatch) => {
             'https://social-media-app-mern-api.vercel.app/api/v1/update/profile',
             userData,
             config
-        );
+            , {
+                withCredentials: true, // Ensure cookies are sent with the request
+              });
 
         dispatch({
             type: UPDATE_PROFILE_SUCCESS,
@@ -286,7 +304,9 @@ export const updatePassword = (passwords) => async (dispatch) => {
             'https://social-media-app-mern-api.vercel.app/api/v1/update/password',
             passwords,
             config
-        );
+            , {
+                withCredentials: true, // Ensure cookies are sent with the request
+              });
 
         dispatch({
             type: UPDATE_PASSWORD_SUCCESS,
