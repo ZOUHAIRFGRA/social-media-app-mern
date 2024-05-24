@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const errorMiddleware = require("./middlewares/error");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 
 const connectDatabase = require("./config/database");
 const cloudinary = require("cloudinary");
@@ -18,6 +19,11 @@ cloudinary.config({
 
 
 const app = express();
+app.use(cors({
+  origin: 'http://localhost:3000', // Replace with the origin of your frontend application
+  credentials: true ,
+  // Allow credentials (cookies) to be sent and received
+}));
 const server = app.listen(PORT, () => {
   console.log(`Server Running on http://localhost:${PORT}`);
 });

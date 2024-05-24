@@ -35,9 +35,9 @@ function App() {
 
   const { isAuthenticated } = useSelector((state) => state.user);
 
-  useEffect(() => {
-    dispatch(loadUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(loadUser());
+  // }, [dispatch]);
 
   // always scroll to top on route/path change
   useEffect(() => {
